@@ -102,7 +102,7 @@ export const MainComponent = () => {
 };
 
 const ItemCard = ({ id, image, title, price }) => {
-  const { cart, setCart } = useContext(CartContext);
+  const { setCart } = useContext(CartContext);
   const isLip = isLipProduct(id);
 
 const handleAddToCart = (id) => {
@@ -129,7 +129,6 @@ const handleAddToCart = (id) => {
         onClick={e => {
           e.preventDefault();
           e.stopPropagation();
-          setCartCount(prev => prev + 1);
           handleAddToCart(id);
         }}
       >

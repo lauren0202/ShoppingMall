@@ -118,7 +118,6 @@ const handleAddToCart = (id) => {
         <Price>W {currentItem.price.toLocaleString()}</Price>
         <AddButton
           onClick={() => {
-            setCartCount(prev => prev + 1);
             handleAddToCart(id);
           }}
         >

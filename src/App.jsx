@@ -1,30 +1,28 @@
 import React, { createContext, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavBar } from './components/nav-bar'
-import { Outlet } from "react-router-dom";
-
-
+import { MainComponent } from './components/main-contents.jsx'
+import { ItemPage } from './components/item-page.jsx'
+import { CartPage } from './components/cart.jsx'
 
 export const CartContext = createContext({});
 
 function App() {
-  
-
-  // cart: [{id: 1, count: 2}, ...] 구조
+  // 전역 상태
   const [cart, setCart] = useState([]);
-
   const cartCount = cart.reduce((sum, item) => sum + item.count, 0);
-  
+
   return (
-    <div>
-      <CartContext.Provider value={{
-        cart,
-        setCart,
-        cartCount
-      }}>
+    <CartContext.Provider value={{ cart, setCart, cartCount }}>
+      <BrowserRouter>
         <NavBar />
-        <Outlet />
-      </CartContext.Provider>
-    </div>
+        <Routes>
+          <Route path="/" element={<MainComponent />} />
+          <Route path="/item/:id" element={<ItemPage />} />
+          <Route path="/cart" element={<CartPage />} />
+        </Routes>
+      </BrowserRouter>
+    </CartContext.Provider>
   );
 }
 
