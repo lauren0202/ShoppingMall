@@ -121,14 +121,14 @@ const handleAddToCart = (id) => {
 };
 
   return (
-    <StyledCard $isLip={isLip} onClick={e => e.stopPropagation()}>
+    <StyledCard $isLip={isLip}>
       <StyledImage src={image} alt={title} />
       <Title>{title}</Title>
       <Price>W {price.toLocaleString()}</Price>
       <AddButton
         onClick={e => {
-          
-          
+          e.preventDefault();
+          e.stopPropagation();
           handleAddToCart(id);
         }}
       >
