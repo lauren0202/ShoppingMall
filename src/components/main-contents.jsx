@@ -128,7 +128,7 @@ const handleAddToCart = (id) => {
       <AddButton
         onClick={e => {
           e.preventDefault();
-          e.stopPropagation();
+          
           handleAddToCart(id);
         }}
       >
