@@ -127,7 +127,7 @@ const handleAddToCart = (id) => {
       <Price>W {price.toLocaleString()}</Price>
       <AddButton
         onClick={e => {
-          e.preventDefault();
+          
           
           handleAddToCart(id);
         }}
